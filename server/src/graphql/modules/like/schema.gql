@@ -1,0 +1,9 @@
+type Like {
+  id: ID!
+  username: String!
+  createdAt: String
+}
+
+type Mutation {
+  likePost(postId: ID!): String
+}

@@ -3,6 +3,10 @@ type Post {
   body: String!
   username: String!
   createdAt: String
+  comments: [Comment]!
+  likes: [Like]!
+  likesCount: Int!
+  commentsCount: Int!
 }
 
 type Query {
