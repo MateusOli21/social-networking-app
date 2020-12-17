@@ -7,20 +7,20 @@ const postSchema = new Schema({
     {
       body: String,
       username: String,
-      createAt: String,
+      createdAt: String,
     },
   ],
   likes: [
     {
       username: String,
-      createAt: String,
+      createdAt: String,
     },
   ],
   user: {
     type: Schema.Types.ObjectId,
     ref: 'users',
   },
-  createAt: String,
+  createdAt: String,
 });
 
 module.exports = model('Post', postSchema);
