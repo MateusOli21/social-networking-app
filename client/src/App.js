@@ -1,11 +1,18 @@
+import { BrowserRouter } from 'react-router-dom';
+
+import ApolloClientProvider from './ApolloClient';
+import Routes from './routes';
+
 import GlobalStyles from './assets/GlobalStyles';
 
 function App() {
     return (
-        <div>
-            <GlobalStyles />
-            <h1>Hello world</h1>
-        </div>
+        <ApolloClientProvider>
+            <BrowserRouter>
+                <GlobalStyles />
+                <Routes />
+            </BrowserRouter>
+        </ApolloClientProvider>
     );
 }
 
