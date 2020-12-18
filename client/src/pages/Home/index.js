@@ -1,13 +1,31 @@
 import React from 'react';
+import { useQuery } from '@apollo/client';
 
-import { Container } from './styles';
+import Navbar from '../../components/Navbar';
+
+import { Container, Content } from './styles';
+import { FETCH_POSTS } from './query';
+import PostCard from '../../components/PostCard';
 
 const Home = () => {
-  return (
-    <Container>
-      <h1>Home</h1>
-    </Container>
-  );
+    const { data } = useQuery(FETCH_POSTS);
+
+    return (
+        <>
+            <Navbar />
+            <Container>
+                <Content>
+                    {data ? (
+                        data.getPosts.map((post) => (
+                            <PostCard key={post.id} post={post} />
+                        ))
+                    ) : (
+                        <h1>Carregando</h1>
+                    )}
+                </Content>
+            </Container>
+        </>
+    );
 };
 
 export default Home;
