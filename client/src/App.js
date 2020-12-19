@@ -1,4 +1,5 @@
 import { BrowserRouter } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import ApolloClientProvider from './ApolloClient';
 import Routes from './routes';
@@ -11,6 +12,7 @@ function App() {
             <BrowserRouter>
                 <GlobalStyles />
                 <Routes />
+                <ToastContainer autoClose={3000} />
             </BrowserRouter>
         </ApolloClientProvider>
     );

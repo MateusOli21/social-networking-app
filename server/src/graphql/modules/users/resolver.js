@@ -14,19 +14,31 @@ module.exports = {
       });
 
       if (!validateLogin) {
-        throw new UserInputError('Errors', { validateLogin });
+        throw new UserInputError('Errors', {
+          errors: {
+            validateLogin,
+          },
+        });
       }
 
       const user = await User.findOne({ username });
 
       if (!user) {
-        throw new UserInputError('User not found');
+        throw new UserInputError('User not found', {
+          errors: {
+            user: 'Usuário não encontrado.',
+          },
+        });
       }
 
       const passwordMatch = await bcrypt.compare(password, user.password);
 
       if (!passwordMatch) {
-        throw new UserInputError('Wrong credentials');
+        throw new UserInputError('Wrong credentials', {
+          errors: {
+            password: 'Usuário ou senha incorretos.',
+          },
+        });
       }
 
       const token = generateToken(user);
@@ -43,20 +55,31 @@ module.exports = {
       });
 
       if (!validateUser) {
-        throw new UserInputError('Errors', { validateUser });
+        throw new UserInputError('Errors', {
+          errors: { validateUser },
+        });
       }
 
-      const { username, email, password } = data;
+      let { username, email, password } = data;
 
-      const userExists = await User.findOne({ username });
+      let userExists = await User.findOne({ email });
 
       if (userExists) {
-        throw new UserInputError('Username is taken', {
+        throw new UserInputError('Email already taken', {
           errors: {
-            username: 'This username is alredy been used.',
+            email: 'E-mail já associado a uma conta.',
           },
         });
       }
+
+      if (!userExists) userExists = await User.findOne({ username });
+
+      if (userExists)
+        throw new UserInputError('Username already taken', {
+          errors: {
+            username: 'Nome de usuário indisponível.',
+          },
+        });
 
       password = await bcrypt.hash(password, 12);
 

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { FaTimes, FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import { Container, Logo, Nav } from './styles';
+import Logo from '../Logo';
+
+import { Container, Nav } from './styles';
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
@@ -11,9 +13,7 @@ const Navbar = () => {
 
     return (
         <Container>
-            <Link to="/">
-                <Logo>DevShare</Logo>
-            </Link>
+            <Logo />
 
             <Nav isMenuOpen={openMenu}>
                 <ul>

@@ -22,11 +22,6 @@ export const Container = styled.header`
     }
 `;
 
-export const Logo = styled.h1`
-    font-size: var(--bigger-size);
-    color: var(--primary-color);
-`;
-
 export const Nav = styled.div`
     position: fixed;
     top: 7rem;
@@ -45,12 +40,12 @@ export const Nav = styled.div`
 
         li {
             margin: 1.6rem 0;
-            font-size: var(--normal-size);
             transition: color 0.2s ease-in;
             cursor: pointer;
 
             a {
                 color: var(--black-color);
+                font-size: var(--normal-size);
 
                 &:hover {
                     color: var(--primary-alt-color);
