@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 
 import loginImg from '../../assets/images/conversation.svg';
 import LOGIN_USER from './query';
+import { useAuthContext } from '../../Context/AuthContext';
 
 import Logo from '../../components/Logo';
 import SignButton from '../../components/SignButton';
@@ -14,6 +15,8 @@ import SignPageSwitch from '../../components/SignPageSwitch';
 import { Container, Content, Wrapper } from './styles';
 
 const Login = ({ history }) => {
+    const { login } = useAuthContext();
+
     const [errors, setErrors] = useState(null);
     const [values, setValue] = useState({
         username: '',
@@ -33,7 +36,8 @@ const Login = ({ history }) => {
     };
 
     const [addUser] = useMutation(LOGIN_USER, {
-        update(_, result) {
+        update(_, { data }) {
+            login(data.login);
             history.push('/');
         },
         onError(err) {

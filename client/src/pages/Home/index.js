@@ -2,17 +2,17 @@ import React from 'react';
 import { useQuery } from '@apollo/client';
 
 import Navbar from '../../components/Navbar';
+import PostCard from '../../components/PostCard';
+import { FETCH_POSTS } from './query';
 
 import { Container, Content } from './styles';
-import { FETCH_POSTS } from './query';
-import PostCard from '../../components/PostCard';
 
-const Home = () => {
+const Home = ({ history }) => {
     const { data } = useQuery(FETCH_POSTS);
 
     return (
         <>
-            <Navbar />
+            <Navbar history={history} />
             <Container>
                 <Content>
                     {data ? (

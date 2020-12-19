@@ -29,9 +29,10 @@ a{
     --h1-size: 4.8rem;
     --h2-size: 3.6rem;
     --h3-size: 2.8rem;
-    --normal-size: 1.6rem;
-    --larger-size: 1.8rem;
     --bigger-size: 2.2rem;
+    --larger-size: 1.8rem;
+    --normal-size: 1.6rem;
+    --small-size: 1.4rem;
 
     --light-weight: 300;
     --normal-weight: 400;

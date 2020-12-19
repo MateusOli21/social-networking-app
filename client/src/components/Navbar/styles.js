@@ -32,6 +32,12 @@ export const Nav = styled.div`
     background: var(--white-color);
     transition: all 0.3s ease-in-out;
 
+    &.logged {
+        width: fit-content;
+        font-weight: var(--bold-weight);
+        font-size: var(--small-size);
+    }
+
     ul {
         display: flex;
         flex-direction: column;
@@ -45,7 +51,7 @@ export const Nav = styled.div`
 
             a {
                 color: var(--black-color);
-                font-size: var(--normal-size);
+                font-size: var(--small-size);
 
                 &:hover {
                     color: var(--primary-alt-color);
@@ -53,22 +59,27 @@ export const Nav = styled.div`
             }
         }
 
+        .user {
+            font-weight: var(--normal-weight);
+        }
+
         .login {
             padding: 0.8rem 1.6rem;
             border-radius: 0.6rem;
+            color: var(--white-color);
             background: var(--primary-color);
             transition: all 0.2s ease-in;
 
             a {
                 color: var(--white-color);
+
+                &:hover {
+                    color: var(--white-color);
+                }
             }
 
             &:hover {
                 background: var(--primary-alt-color);
-
-                a {
-                    color: var(--white-color);
-                }
             }
         }
     }
