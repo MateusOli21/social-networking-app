@@ -27,7 +27,7 @@ const Navbar = ({ history }) => {
                     {user ? (
                         <>
                             <li className="user">Olá, {user.username}</li>
-                            <li className="login" onClick={handleLogOut}>
+                            <li className="logout" onClick={handleLogOut}>
                                 Sair
                             </li>
                         </>

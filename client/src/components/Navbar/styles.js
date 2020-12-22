@@ -63,6 +63,19 @@ export const Nav = styled.div`
             font-weight: var(--normal-weight);
         }
 
+        .logout {
+            padding: 0.8rem 1.6rem;
+            background: transparent;
+            border-radius: 0.6rem;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            transition: all 0.2s ease-in;
+
+            &:hover {
+                color: var(--primary-alt-color);
+            }
+        }
+
         .login {
             padding: 0.8rem 1.6rem;
             border-radius: 0.6rem;
