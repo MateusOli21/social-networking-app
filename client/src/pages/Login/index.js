@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { toast } from 'react-toastify';
 
-import loginImg from '../../assets/images/conversation.svg';
-import LOGIN_USER from './query';
-import { useAuthContext } from '../../Context/AuthContext';
-
 import Logo from '../../components/Logo';
 import SignButton from '../../components/SignButton';
 import SignImage from '../../components/SignImage';
 import InputContainer from '../../components/InputContainer';
 import SignPageSwitch from '../../components/SignPageSwitch';
+import loginImg from '../../assets/images/conversation.svg';
+
+import { LOGIN_USER } from '../../graphql/userQueries';
+import { useAuthContext } from '../../Context/AuthContext';
 
 import { Container, Content, Wrapper } from './styles';
 

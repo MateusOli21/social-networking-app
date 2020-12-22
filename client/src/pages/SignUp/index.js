@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { toast } from 'react-toastify';
 
-import signUpImg from '../../assets/images/likes.svg';
-import REGISTER_USER from './query';
-
 import Logo from '../../components/Logo';
 import SignButton from '../../components/SignButton';
 import SignImage from '../../components/SignImage';
 import SignPageSwitch from '../../components/SignPageSwitch';
 import InputContainer from '../../components/InputContainer';
+import signUpImg from '../../assets/images/likes.svg';
+
+import { REGISTER_USER } from '../../graphql/userQueries';
 
 import { Container, Content, Wrapper } from './styles';
 
