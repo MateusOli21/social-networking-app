@@ -3,9 +3,9 @@ import { useMutation } from '@apollo/client';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
 
 import { useAuthContext } from '../../Context/AuthContext';
+import { LIKE_POST } from '../../graphql/postsQueries';
 
 import { Container } from './styles';
-import { LIKE_POST } from '../../graphql/postsQueries';
 
 const PostLikeButton = ({ post }) => {
     const [liked, setLiked] = useState(false);
@@ -29,8 +29,6 @@ const PostLikeButton = ({ post }) => {
 
     const handleLikeButton = () => {
         likePost();
-
-        // setLiked(!liked);
     };
 
     return (

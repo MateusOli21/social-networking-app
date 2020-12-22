@@ -21,7 +21,7 @@ const PostCard = ({ post }) => {
             <PostBody>
                 <p>{post.body}</p>
 
-                <Icons>
+                <Icons hasUser={user}>
                     <PostLikeButton post={post} />
 
                     <PostCommentButton post={post} />

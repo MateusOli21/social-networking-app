@@ -58,4 +58,13 @@ const LIKE_POST = gql`
     }
 `;
 
-export { FETCH_POSTS, CREATE_POST, LIKE_POST };
+const DELETE_POST = gql`
+    mutation deletePost($id: ID!) {
+        deletePost(id: $id) {
+            id
+            likesCount
+        }
+    }
+`;
+
+export { FETCH_POSTS, CREATE_POST, LIKE_POST, DELETE_POST };

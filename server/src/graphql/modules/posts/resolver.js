@@ -52,7 +52,7 @@ module.exports = {
           );
 
         await post.delete();
-        return 'Post deleted successfuly.';
+        return post;
       } catch (err) {
         throw new Error(err);
       }

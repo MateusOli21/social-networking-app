@@ -29,4 +29,5 @@ export const PostBody = styled.div`
 
 export const Icons = styled.div`
     display: flex;
+    pointer-events: ${({ hasUser }) => (hasUser ? 'visible' : 'none')};
 `;

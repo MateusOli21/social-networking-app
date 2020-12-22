@@ -7,22 +7,22 @@ import { CREATE_POST, FETCH_POSTS } from '../../graphql/postsQueries';
 import { Container, Form } from './styles';
 
 const CreatePost = () => {
-    const [values, setValues] = useState({ body: '' });
+    const [message, setMessage] = useState('');
 
-    const handleChange = (event) => setValues({ body: event.target.value });
+    const handleChange = (event) => setMessage(event.target.value);
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (values.body.trim() === '')
+        if (message.trim() === '')
             return toast.warning('Você deve escrever algo antes de publicar.');
 
         createPost();
-        setValues({ body: '' });
+        setMessage('');
     };
 
     const [createPost] = useMutation(CREATE_POST, {
-        variables: values,
+        variables: { body: message },
         update(proxy, result) {
             const data = proxy.readQuery({ query: FETCH_POSTS });
 
@@ -45,7 +45,7 @@ const CreatePost = () => {
             <Form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    value={values.body}
+                    value={message}
                     onChange={handleChange}
                     placeholder="Comece a sua publicação..."
                 />
