@@ -5,5 +5,5 @@ type Like {
 }
 
 type Mutation {
-  likePost(postId: ID!): String
+  likePost(postId: ID!): Post
 }

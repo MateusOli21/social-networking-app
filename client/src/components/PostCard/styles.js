@@ -29,16 +29,4 @@ export const PostBody = styled.div`
 
 export const Icons = styled.div`
     display: flex;
-
-    .icon-container {
-        display: flex;
-        align-items: center;
-        margin-right: 3.6rem;
-
-        .icon {
-            color: var(--primary-color);
-            margin-right: 1rem;
-            cursor: pointer;
-        }
-    }
 `;

@@ -1,11 +1,17 @@
 import React from 'react';
-import { FaHeart, FaComment } from 'react-icons/fa';
 import moment from 'moment';
 import 'moment/locale/pt-br';
+
+import { useAuthContext } from '../../Context/AuthContext';
+import PostDeleteButton from '../PostDeleteButton';
+import PostLikeButton from '../PostLikeButton';
+import PostCommentButton from '../PostCommentButton';
 
 import { Container, PostBody, PostInfo, Icons } from './styles';
 
 const PostCard = ({ post }) => {
+    const { user } = useAuthContext();
+
     return (
         <Container>
             <PostInfo>
@@ -16,15 +22,13 @@ const PostCard = ({ post }) => {
                 <p>{post.body}</p>
 
                 <Icons>
-                    <div className="icon-container">
-                        <FaHeart size={20} className="icon" />
-                        <p>{post.likesCount}</p>
-                    </div>
+                    <PostLikeButton post={post} />
 
-                    <div className="icon-container">
-                        <FaComment size={20} className="icon" />
-                        <p>{post.commentsCount}</p>
-                    </div>
+                    <PostCommentButton post={post} />
+
+                    {user && user.username === post.username && (
+                        <PostDeleteButton postId={post.id} />
+                    )}
                 </Icons>
             </PostBody>
         </Container>

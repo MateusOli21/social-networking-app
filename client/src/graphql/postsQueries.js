@@ -8,6 +8,9 @@ const FETCH_POSTS = gql`
             body
             createdAt
             likesCount
+            likes {
+                username
+            }
             commentsCount
             comments {
                 username
@@ -42,4 +45,17 @@ const CREATE_POST = gql`
     }
 `;
 
-export { FETCH_POSTS, CREATE_POST };
+const LIKE_POST = gql`
+    mutation likePost($postId: ID!) {
+        likePost(postId: $postId) {
+            id
+            likesCount
+            likes {
+                id
+                username
+            }
+        }
+    }
+`;
+
+export { FETCH_POSTS, CREATE_POST, LIKE_POST };

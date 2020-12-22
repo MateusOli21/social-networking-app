@@ -24,7 +24,7 @@ module.exports = {
 
       await post.save();
 
-      return response;
+      return post;
     },
   },
 };
