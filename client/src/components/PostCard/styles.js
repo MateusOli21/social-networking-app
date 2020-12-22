@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
     margin: 3.2rem 0;
     border-radius: 0.4rem;
     padding: 1.4rem 2.4rem;
