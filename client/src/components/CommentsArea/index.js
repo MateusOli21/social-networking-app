@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { FETCH_POST } from '../../graphql/postsQueries';
+import CreateComment from '../CreateComment';
+import Comment from '../Comment';
 
 import { Container } from './styles';
-import Comment from '../Comment';
+import { AnimatePresence } from 'framer-motion';
 
 const CommentsArea = ({ postId }) => {
     const [post, setPost] = useState(null);
@@ -30,11 +32,19 @@ const CommentsArea = ({ postId }) => {
                 <p>
                     {post.commentsCount} {quantity}
                 </p>
+
+                <CreateComment postId={postId} />
             </div>
             <div className="comments">
-                {post.comments.map((comment) => (
-                    <Comment key={comment.id} comment={comment} />
-                ))}
+                <AnimatePresence>
+                    {post.comments.map((comment) => (
+                        <Comment
+                            key={comment.id}
+                            comment={comment}
+                            postId={postId}
+                        />
+                    ))}
+                </AnimatePresence>
             </div>
         </Container>
     );

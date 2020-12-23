@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
     margin-bottom: 1.6rem;
 
     .comment-info {
@@ -20,5 +21,9 @@ export const Container = styled.div`
     .comment-body {
         margin-top: 0.6rem;
         font-size: var(--small-size);
+    }
+
+    .comments-buttons {
+        margin-top: 0.8rem;
     }
 `;
