@@ -4,7 +4,7 @@ import { useAuthContext } from '../../Context/AuthContext';
 
 import { Container } from './styles';
 
-const PostCommentButton = ({ post }) => {
+const PostCommentButton = ({ post, handleOpenComments }) => {
     const [commented, setCommented] = useState(false);
     const { user } = useAuthContext();
 
@@ -21,13 +21,13 @@ const PostCommentButton = ({ post }) => {
     }, [post.comments, user]);
 
     return (
-        <Container>
+        <Container onClick={handleOpenComments}>
             {commented ? (
-                <FaComment size={20} className="icon" fill="red" />
+                <FaComment size={20} className="icon" />
             ) : (
                 <FaRegComment size={20} className="icon" />
             )}
-            <p>{post.commentsCount}</p>
+            <p>Comentar</p>
         </Container>
     );
 };

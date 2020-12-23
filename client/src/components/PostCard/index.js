@@ -1,17 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
-import { useAuthContext } from '../../Context/AuthContext';
 import PostDeleteButton from '../PostDeleteButton';
 import PostLikeButton from '../PostLikeButton';
 import PostCommentButton from '../PostCommentButton';
+import CommentsArea from '../CommentsArea';
+import { useAuthContext } from '../../Context/AuthContext';
 import cardVariants from './animations';
 
 import { Container, PostBody, PostInfo, Icons } from './styles';
 
 const PostCard = ({ post }) => {
     const { user } = useAuthContext();
+    const [commentsOpen, setCommentsOpen] = useState(false);
+
+    const handleOpenComments = () => setCommentsOpen(!commentsOpen);
 
     return (
         <Container variants={cardVariants} initial="hidden" animate="visible">
@@ -25,13 +29,20 @@ const PostCard = ({ post }) => {
                 <Icons hasUser={user}>
                     <PostLikeButton post={post} />
 
-                    <PostCommentButton post={post} />
+                    <PostCommentButton
+                        post={post}
+                        handleOpenComments={handleOpenComments}
+                    />
 
                     {user && user.username === post.username && (
                         <PostDeleteButton postId={post.id} />
                     )}
                 </Icons>
             </PostBody>
+
+            {commentsOpen && (
+                <CommentsArea postId={post.id} commentsOpen={commentsOpen} />
+            )}
         </Container>
     );
 };
