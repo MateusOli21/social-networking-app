@@ -33,7 +33,7 @@ export const Nav = styled.div`
     transition: all 0.3s ease-in-out;
 
     &.logged {
-        width: fit-content;
+        width: 100%;
         font-weight: var(--bold-weight);
         font-size: var(--small-size);
     }
@@ -103,6 +103,12 @@ export const Nav = styled.div`
         align-items: center;
         justify-content: center;
         height: fit-content;
+
+        &.logged {
+            width: fit-content;
+            font-weight: var(--bold-weight);
+            font-size: var(--small-size);
+        }
 
         ul {
             flex-direction: row;
