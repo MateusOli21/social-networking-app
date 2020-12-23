@@ -19,15 +19,18 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const token = localStorage.getItem('token');
 
-        if (token) {
-            const decodedToken = jwtDecode(token);
+        if (!token) return;
 
-            if (!decodedToken.exp * 1000 < Date.now()) {
-                const decodedUser = { ...decodedToken, token };
+        const decodedToken = jwtDecode(token);
 
-                login(decodedUser);
-            }
+        if (decodedToken.exp * 1000 < Date.now()) {
+            localStorage.removeItem('token');
+            return;
         }
+
+        const decodedUser = { ...decodedToken, token };
+
+        login(decodedUser);
     }, []);
 
     function login(userData) {
