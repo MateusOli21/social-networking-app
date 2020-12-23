@@ -23,9 +23,9 @@ const PostCommentButton = ({ post, handleOpenComments }) => {
     return (
         <Container onClick={handleOpenComments}>
             {commented ? (
-                <FaComment size={20} className="icon" />
+                <FaComment size={18} className="icon" />
             ) : (
-                <FaRegComment size={20} className="icon" />
+                <FaRegComment size={18} className="icon" />
             )}
             <p>Comentar</p>
         </Container>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useMutation } from '@apollo/client';
-import { FaTrashAlt } from 'react-icons/fa';
+import { FiTrash } from 'react-icons/fi';
 import { toast } from 'react-toastify';
 
 import { DELETE_POST, FETCH_POSTS } from '../../graphql/postsQueries';
@@ -34,8 +34,9 @@ const PostDeleteButton = ({ postId }) => {
     const handleDeletePost = () => deletePost();
 
     return (
-        <Container>
-            <FaTrashAlt size={20} className="icon" onClick={handleDeletePost} />
+        <Container onClick={handleDeletePost}>
+            <FiTrash size={18} className="icon" />
+            <p>Excluir</p>
         </Container>
     );
 };

@@ -35,13 +35,13 @@ const PostLikeButton = ({ post }) => {
         <Container>
             {liked ? (
                 <FaHeart
-                    size={20}
+                    size={18}
                     className="icon"
                     onClick={handleLikeButton}
                 />
             ) : (
                 <FaRegHeart
-                    size={20}
+                    size={18}
                     className="icon"
                     onClick={handleLikeButton}
                 />
