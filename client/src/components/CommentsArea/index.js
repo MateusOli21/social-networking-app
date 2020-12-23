@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
+import { AnimatePresence } from 'framer-motion';
 
 import { FETCH_POST } from '../../graphql/postsQueries';
 import CreateComment from '../CreateComment';
 import Comment from '../Comment';
+import Loading from '../Loading';
 
 import { Container } from './styles';
-import { AnimatePresence } from 'framer-motion';
 
 const CommentsArea = ({ postId }) => {
     const [post, setPost] = useState(null);
@@ -19,7 +20,7 @@ const CommentsArea = ({ postId }) => {
         if (data) setPost(data.getPost);
     }, [data]);
 
-    if (!post) return <h1>Carregando...</h1>;
+    if (!post) return <Loading />;
 
     let quantity =
         post.commentsCount > 1 || post.commentsCount === 0
